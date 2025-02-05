@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Tutorial</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .recipe-container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .recipe { margin: 20px; cursor: pointer; position: relative; }
+        .recipe img { width: 300px; height: 200px; border-radius: 10px; }
+        .video-container { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-container video { width: 100%; height: 100%; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Cooking Tutorial</h1>
+    
+    <div class="recipe-container">
+        <div class="recipe" onclick="playVideo(1)">
+            <img src="recipe1.jpg" alt="Recipe 1">
+            <div class="video-container" id="video1">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="recipe" onclick="playVideo(2)">
+            <img src="recipe2.jpg" alt="Recipe 2">
+            <div class="video-container" id="video2">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <h2>Recipe Ingredients</h2>
+    <table>
+        <tr>
+            <th>Recipe</th>
+            <th>Ingredients</th>
+        </tr>
+        <tr>
+            <td>Recipe 1</td>
+            <td>Flour, Sugar, Eggs, Butter</td>
+        </tr>
+        <tr>
+            <td>Recipe 2</td>
+            <td>Tomatoes, Onions, Garlic, Pasta</td>
+        </tr>
+    </table>
+
+    <h2>Submit Your Recipe</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="recipe">Recipe:</label>
+        <textarea id="recipe" name="recipe" required></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function playVideo(id) {
+            var videoContainer = document.getElementById("video" + id);
+            videoContainer.style.display = "block";
+            videoContainer.querySelector("video").play();
+        }
+    </script>
+</body>
+</html>
